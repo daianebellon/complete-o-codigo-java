@@ -1,7 +1,7 @@
 package br.com.felixgilioli.exercicios.facil;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Classe com métodos para trabalhar com listas do tipo {@link java.util.ArrayList}.
@@ -16,7 +16,13 @@ public class ArrayLists {
      * @return lista de inteiros apenas com números impares.
      */
     public static List<Integer> getImpares(List<Integer> numeros) {
-        return numeros;
+        List<Integer> listNumeroImpares = new ArrayList<>();
+        for (Integer numero : numeros) {
+            if (numero % 2 != 0) {
+                listNumeroImpares.add(numero);
+            }
+        }
+        return listNumeroImpares;
     }
 
     /**
@@ -26,7 +32,13 @@ public class ArrayLists {
      * @return quantidade de pessoas.
      */
     public static long getQuantidadeDePessoasQueComecamComALetra(List<String> pessoas, String letra) {
-        return 0;
+        List<String> pessoasQueComecamComLetra = new ArrayList<>();
+        for ( String pessoa : pessoas ) {
+            if (pessoa.substring(0, 1).equals(letra)) {
+                pessoasQueComecamComLetra.add(pessoa);
+            }
+        }
+        return pessoasQueComecamComLetra.size();
     }
 
     /**
@@ -41,16 +53,35 @@ public class ArrayLists {
     public static List<Integer> getMenorQuantidadeDeCedulasPossivelParaInteiro(int valorEntrada) {
         List<Integer> quantidadeDeCedulas = new ArrayList<>();
 
-        // Montagem da Lista
-        /*
-        quantidadeDeCedulas.add(cedulas100);
-        quantidadeDeCedulas.add(cedulas50);
-        quantidadeDeCedulas.add(cedulas20);
-        quantidadeDeCedulas.add(cedulas10);
-        quantidadeDeCedulas.add(cedulas5);
-        quantidadeDeCedulas.add(cedulas2);
-        quantidadeDeCedulas.add(cedulas1);
-        */
+        int restante = valorEntrada;
+
+        int qtdeCedulas100 = restante / 100;
+        restante -= qtdeCedulas100 * 100;
+
+        int qtdeCedulas50 = restante / 50;
+        restante -= qtdeCedulas50 * 50;
+
+        int qtdeCedulas20 = restante / 20;
+        restante -= qtdeCedulas20 * 20;
+
+        int qtdeCedulas10 = restante / 10;
+        restante -= qtdeCedulas10 * 10;
+
+        int qtdeCedulas5 = restante / 5;
+        restante -= qtdeCedulas5 * 5;
+
+        int qtdeCedulas2 = restante / 2;
+        restante -= qtdeCedulas2 * 2;
+
+        int qtdeCedulas1 = restante / 1;
+
+        quantidadeDeCedulas.add(qtdeCedulas100);
+        quantidadeDeCedulas.add(qtdeCedulas50);
+        quantidadeDeCedulas.add(qtdeCedulas20);
+        quantidadeDeCedulas.add(qtdeCedulas10);
+        quantidadeDeCedulas.add(qtdeCedulas5);
+        quantidadeDeCedulas.add(qtdeCedulas2);
+        quantidadeDeCedulas.add(qtdeCedulas1);
 
         return quantidadeDeCedulas;
     }
@@ -61,7 +92,10 @@ public class ArrayLists {
      * @param pessoas
      * @return
      */
-    public static List<String> getPessoasOrdenadasAlfabeticamenteCrescente(List<String> pessoas) { return null; }
+    public static List<String> getPessoasOrdenadasAlfabeticamenteCrescente(List<String> pessoas) {
+        Collections.sort(pessoas);
+        return pessoas;
+    }
 
     /**
      * Deve retornar a mesma lista de nomes recebida {@param pessoas}, mas ordenada
@@ -69,7 +103,10 @@ public class ArrayLists {
      * @param pessoas
      * @return
      */
-    public static List<String> getPessoasOrdenadasAlfabeticamenteDecrescente(List<String> pessoas) { return null; }
+    public static List<String> getPessoasOrdenadasAlfabeticamenteDecrescente(List<String> pessoas) {
+        Collections.sort(pessoas, Collections.reverseOrder());
+        return pessoas;
+    }
 
 
 }

@@ -1,6 +1,8 @@
 package br.com.felixgilioli.exercicios.facil;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Classe com métodos para trabalhar com objetos do tipo {@link java.time.LocalDate}.
@@ -16,7 +18,7 @@ public class LocalDates {
      * @return quantidade de dias entre as datas.
      */
     public static long getQuantidadeDeDiasEntreDatas(LocalDate inicio, LocalDate fim) {
-        return 0;
+        return Math.abs(ChronoUnit.DAYS.between(inicio, fim));
     }
 
     /**
@@ -27,7 +29,7 @@ public class LocalDates {
      * @return
      */
     public static LocalDate getDataAnosAFrente(LocalDate inicio, long anos) {
-        return null;
+        return inicio.plusYears(anos);
     }
 
     /**
@@ -37,7 +39,9 @@ public class LocalDates {
      * @param meses
      * @return
      */
-    public static LocalDate getDataMesesAtras(LocalDate inicio, long meses) { return null; }
+    public static LocalDate getDataMesesAtras(LocalDate inicio, long meses) {
+        return inicio.minusMonths(meses);
+    }
 
     /**
      * Deve retornar a data fornecida {@param data} formatada em uma string de acordo com o
@@ -45,7 +49,9 @@ public class LocalDates {
      * @param data
      * @return
      */
-    public static String getDataFormatadaComBarrasNoPadraoBrasileiro(LocalDate data) { return null; }
+    public static String getDataFormatadaComBarrasNoPadraoBrasileiro(LocalDate data) {
+        return DateTimeFormatter.ofPattern("dd/MM/yyyy").format(data);
+    }
 
     /**
      * Deve retornar a data fornecida {@param data} formatada em uma string de acordo com o
@@ -53,5 +59,7 @@ public class LocalDates {
      * @param data
      * @return
      */
-    public static String getDataFormatadaComHifensNoPadraoNorteAmericano(LocalDate data) { return null; }
+    public static String getDataFormatadaComHifensNoPadraoNorteAmericano(LocalDate data) {
+        return DateTimeFormatter.ofPattern("yyyy-MM-dd").format(data);
+    }
 }

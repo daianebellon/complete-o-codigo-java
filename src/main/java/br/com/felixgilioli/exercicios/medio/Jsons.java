@@ -1,5 +1,7 @@
 package br.com.felixgilioli.exercicios.medio;
 
+import com.google.gson.Gson;
+
 /**
  * Métodos utilitários para trabalhar com JSON.
  */
@@ -14,7 +16,8 @@ public class Jsons {
      * @return json.
      */
     public static String toGson(Object obj) {
-        throw new UnsupportedOperationException();
+       Gson gson = new Gson();
+         throw new UnsupportedOperationException();
     }
 
 }

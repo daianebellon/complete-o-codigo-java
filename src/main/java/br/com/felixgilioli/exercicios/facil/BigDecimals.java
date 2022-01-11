@@ -1,6 +1,9 @@
 package br.com.felixgilioli.exercicios.facil;
 
+import jdk.jfr.Percentage;
+
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * Classe com métodos para trabalhar com {@link java.math.BigDecimal}.
@@ -18,6 +21,9 @@ public class BigDecimals {
      * @return valor com base no percentual.
      */
     public static BigDecimal getValorComBaseNoPercentual(BigDecimal valor, BigDecimal percentual) {
-        return null;
+        if (percentual.equals(BigDecimal.ZERO) || valor.equals(BigDecimal.ZERO)) {
+            return BigDecimal.ZERO;
+        }
+        return valor.multiply(percentual).divide(new BigDecimal("100"));
     }
 }
