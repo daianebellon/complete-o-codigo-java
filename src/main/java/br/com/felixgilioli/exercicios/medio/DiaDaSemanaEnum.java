@@ -1,5 +1,8 @@
 package br.com.felixgilioli.exercicios.medio;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Enum com dias da semana.
  */
@@ -33,7 +36,14 @@ public enum DiaDaSemanaEnum {
      * @return enum.
      */
     public static DiaDaSemanaEnum getEnumPelaDescricao(String descricao) {
-        throw new UnsupportedOperationException();
+        for (DiaDaSemanaEnum diaDaSemanaEnum : values()) {
+            if (diaDaSemanaEnum.getDescricao().equals(descricao)) {
+                return Arrays.stream(DiaDaSemanaEnum.values())
+                        .filter(e -> e.getDescricao().equals(descricao))
+                        .findFirst().get();
+            }
+        }
+        return null;
     }
 
 }
